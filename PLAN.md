@@ -11,9 +11,12 @@ US hospitals: **`hospitals.json`**, every point of the National Structures Datas
 
 **The places are the U.S. Geological Survey's**: The National Map's National Structures Dataset, `carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/14` (6,550 points on 2026-10-20; the service's credit *"USGS TNM – National Structures Dataset"*; The National Map's data free and in the public domain, its credit *"Map services and data available from U.S. Geological Survey, National Geospatial Program"*). **What a hospital offers is CMS's**: *Hospital General Information*, data.cms.gov's provider data `xubh-q36u` (5,419 hospitals registered with Medicare; no license statement found on its page, its catalog's FAQ or its footer, so its use rests on its being a federal work, 17 U.S.C. § 105; its FAQ: no key, no rate limits). Its CSV's address changes with each release, so the catalog's record is read first. **The terms were read before a line was written** (2026-10-20).
 
+## 2026-10-20: the first run, and the schedule
+
+The first dispatched run (`39397796443`, 09:02-09:07 UTC) was green: the hospitals fresh - 6,550 of the National Structures Dataset's, 4,487 matched to Medicare's records - 5,487 tiles in `land/hospitals/`, R2's alone, the root on the `published` branch. The schedule set then: daily at 09:47 UTC, the step reading upstream each month.
+
 ## Open
 
-1. The first dispatched run, read: the product fresh, `hospitals.json` and `land/hospitals/` on R2 alone.
-2. A second run the next day: not due, the same version, nothing uploaded.
-3. Then the daily schedule.
-4. The join's rate read each month; the hospitals no rule finds, read by region.
+1. A second run the next day: not due, the same version, nothing uploaded.
+2. Then the daily schedule.
+3. The join's rate read each month; the hospitals no rule finds, read by region.
