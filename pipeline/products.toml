@@ -1,0 +1,43 @@
+# What this repository publishes: US hospitals — every point of the U.S. Geological Survey's National
+# Structures Dataset's Hospitals/Medical Centers layer, with its phone, type, emergency department and
+# facility id where the Centers for Medicare & Medicaid Services' Hospital General Information lists it —
+# every record in `hospitals.json`, and the same records as a pyramid of Mapbox vector tiles beside it,
+# `land/hospitals/` (an index and its versioned tiles, zooms 4 to 10). The fetcher is the site's
+# `scripts/fetch-hospitals.py`, whose docstring carries the measurements; the tiles are written by the
+# site's `scripts/point_tiles.py`.
+#
+# **To the second host alone** (`r2_only`, the site pipeline's D13, its note of 2026-10-09): every file
+# of the product is published to Cloudflare R2 and not to Pages, which carries the status alone; the
+# root stays on the `published` branch, where the next run seeds from it. `trees` names the folder the
+# product writes beside its root (the orchestrator's, 2026-10-20), so it goes to R2 with it.
+#
+# **The step runs every run; the sources are read monthly.** A tree is never banked, so the tiles are
+# made again from the published root on every run, whether the workflow's cache restored them or
+# not, and the fetcher reads the sources itself only once
+# its root is a month old (`EVERY_HOURS`, 718): the structures are refreshed by the month, CMS's list by
+# the quarter.
+#
+# **The budget is the source's lateness and two months.** The hour is the newest day the structures
+# loaded a record: measured 2026-10-20, a refresh dated October stood 75 days behind it (2026-08-06);
+# 75 days, the source's month and this read's month make 135 days, 3,240 hours.
+
+[contract]
+check = ["node", "scripts/test-schema.mjs"]
+roots = ["node", "scripts/test-schema.mjs", "--roots"]
+
+[defaults]
+timeout_minutes = 20
+
+[steps.hospitals]
+cmd = ["python3", "scripts/fetch-hospitals.py", "--only=hospitals"]
+lane = "carto.nationalmap.gov"
+
+[products.hospitals]
+title = "US hospitals, USGS's National Structures Dataset with CMS's Hospital General Information"
+step = "hospitals"
+roots = ["hospitals.json"]
+writes = ["hospitals.json"]
+namespace = ["python3", "scripts/fetch-hospitals.py", "--namespace", "--only=hospitals"]
+max_age_hours = 3240
+r2_only = true
+trees = ["land/hospitals"]
