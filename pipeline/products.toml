@@ -31,6 +31,8 @@ timeout_minutes = 20
 [steps.hospitals]
 cmd = ["python3", "scripts/fetch-hospitals.py", "--only=hospitals"]
 lane = "carto.nationalmap.gov"
+# A month's read downloads OpenStreetMap's US extracts from Geofabrik, state by state.
+timeout_minutes = 150
 
 [products.hospitals]
 title = "US hospitals, USGS's National Structures Dataset with CMS's Hospital General Information"
