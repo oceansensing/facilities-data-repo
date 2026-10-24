@@ -1,0 +1,38 @@
+{
+ "schema": 2,
+ "contract": 1,
+ "generated": "2026-10-24T09:52:21Z",
+ "mode": "full",
+ "run": {
+  "id": "40083626838",
+  "url": "https://github.com/oceansensing/facilities-data-repo/actions/runs/40083626838"
+ },
+ "schedule": {
+  "crons": [
+   "47 9 * * *"
+  ],
+  "longestGapHours": 24.0
+ },
+ "products": {
+  "hospitals": {
+   "title": "US hospitals, USGS's National Structures Dataset with CMS's Hospital General Information",
+   "roots": [
+    "hospitals.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-24T09:52:21Z",
+   "updated": "2026-10-22T00:48:10Z",
+   "hour": "2026-08-06T03:46:07Z",
+   "modelRun": null,
+   "source": "USGS National Structures Dataset; CMS Hospital General Information; websites \u00a9 OpenStreetMap contributors (ODbL)",
+   "hours": [
+    "2026-08-06T03:46:07Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 1902.1,
+   "nearestOffsetHours": 1902.1
+  }
+ }
+}
