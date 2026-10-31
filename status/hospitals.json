@@ -1,0 +1,24 @@
+{
+ "schema": 1,
+ "product": "hospitals",
+ "title": "US hospitals, USGS's National Structures Dataset with CMS's Hospital General Information",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-10-31T09:52:26Z",
+ "updated": "2026-10-22T00:48:10Z",
+ "hour": "2026-08-06T03:46:07Z",
+ "modelRun": null,
+ "source": "USGS National Structures Dataset; CMS Hospital General Information; websites \u00a9 OpenStreetMap contributors (ODbL)",
+ "hours": [
+  "2026-08-06T03:46:07Z"
+ ],
+ "files": {
+  "hospitals.json": {
+   "bytes": 1958776,
+   "sha256": "348ce1b8c15fda2927653745f04fc162a287cf77ef9ab49f4eb30afb9134f28e"
+  }
+ },
+ "trees": {
+  "land/hospitals": "be951df2099e"
+ }
+}
