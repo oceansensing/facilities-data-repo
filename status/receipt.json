@@ -1,0 +1,15 @@
+{
+ "schema": 1,
+ "generated": "2026-11-14T09:52:15Z",
+ "mode": "full",
+ "fates": {
+  "hospitals": "fresh"
+ },
+ "reasons": {},
+ "built": {},
+ "withheld": {},
+ "deploy": true,
+ "notes": [],
+ "behind": [],
+ "tile_keys": {}
+}
