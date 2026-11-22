@@ -161,7 +161,7 @@ fact from a guess that aged.
 - **Every file is the site's to write**: `scripts/fetch-hospitals.py` fetches and joins, `scripts/point_tiles.py` writes the tiles, `scripts/test-schema.mjs` checks both. Nothing here runs code of its own.
 - **The pyramid is made from the root every run, so the step runs every run.** The `published` branch banks the top-level files of a publish and never a tree, and the workflow's cache can miss, so `land/` is written whole each run: from the source when it is due (the fetcher's own interval, read from the root's `updated`; a dispatch naming the step with `PIPELINE_DUE_NOW` makes it due), and from the published root otherwise — byte for byte, so R2, which uploads by MD5, sends nothing. A source that fails, or a read a control refuses, leaves the published root and makes its pyramid again before the step exits. **Never give the step `every_hours`**: a step not run writes no `land/`, and a run whose stage lacks the tree does not deploy.
 - **`trees = ["land/hospitals"]` is what carries the pyramid to R2 with its product** (the orchestrator, 2026-10-20): without it the folder stays in the tree Pages deploys. The orchestrator keeps the version a held product had and prunes the others once the fates are final, and a tree once published is never published absent: a run whose stage lacks it does not deploy, so the bucket keeps it.
-- **A new version is new paths**: the version is the tiles' own hash, so a changed set is every tile again under a new folder, and the folder it replaced leaves R2 in the same publish, after the status lands.
+- **A new version is new paths**: the version is the tiles' own hash, so a changed set is every tile again under a new folder, and the folder it replaced stays on R2 a run and 31 hours at least (the site pipeline's `LAND_GRACE_SECONDS`), since a reader may hold the index a day.
 - **The join is exact and one to one, and a third of the structures find no CMS record**: the structures hold rehabilitation, long-term and specialty hospitals CMS's list does not, and CMS's psychiatric hospitals the structures often lack. A hospital found carries all four of CMS's fields from one record; one not found carries none and its own type. Fewer than 60% of CMS's hospitals found refuses the read.
 - **The physical controls are hospitals that do not move**: Johns Hopkins, Massachusetts General, the Queen's Medical Center and Providence Alaska where they stand, and Hawaii's, Alaska's, Puerto Rico's, Florida's and Maine's hospitals within their shores.
 
@@ -182,8 +182,9 @@ fact from a guess that aged.
   with `--only=` naming this repository's products: too wide and the write
   fence refuses the run, too narrow and declared files are never written and
   their previous copies are served frozen.
-- **A green run is not a healthy one.** No workflow fails on `behind`; the
-  site's watchdog issue and each product's `staleCause` are the alarm.
+- **A green run is not a healthy one.** No workflow fails on `behind`; for what Pages carries, the site's watchdog issue and each
+  product's `staleCause` are the alarm; for what R2 alone carries, read the fate and `staleCause` in
+  the `published` branch's status, since the watchdog sees only the origin's schedule.
 - **This repository is public**, so its Actions logs are readable by anyone
   signed in to GitHub. Nothing secret is printed, and the downstream app is
   named nowhere here (the owner, 2026-09-26).

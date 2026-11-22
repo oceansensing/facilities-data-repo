@@ -1,7 +1,7 @@
 # facilities-data-repo: the founding plan and running record
 
 US **hospitals**, from USGS's National Structures Dataset and CMS. Created on GitHub by the owner and given its documents by the site's
-`pipeline/scaffold/new-origin.py`. **Nothing is published yet.**
+`pipeline/scaffold/new-origin.py`. **Publishing since 2026-10-20**, its check daily.
 
 ## What it is for
 
@@ -18,5 +18,5 @@ The first dispatched run (`39397796443`, 09:02-09:07 UTC) was green: the hospita
 ## Open
 
 1. A second run the next day: not due, the same version, nothing uploaded.
-2. Then the daily schedule.
+2. ~~Then the daily schedule.~~ On since October 2026.
 3. The join's rate read each month; the hospitals no rule finds, read by region.

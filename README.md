@@ -10,8 +10,11 @@ got wrong and the shared doc doctrine.
 
 US hospitals: **`hospitals.json`**, every point of the National Structures Dataset's *Hospitals/Medical Centers* — its name, street address, city, state, ZIP and the day it was loaded — with, where the Centers for Medicare & Medicaid Services' *Hospital General Information* lists it, its phone, hospital type, whether it runs an emergency department and its facility id, and the join's own count by rule; and **`land/hospitals/`**, the same records as a pyramid of Mapbox vector tiles (uncompressed, extent 4096, one point layer `hospitals`), every hospital at every zoom from 4 to 10; its `index.json` names the version (the tiles' own hash) and every tile to zoom 8. R2's alone.
 
-These products are published **operationally but not drawn on the website's map**; the map's status
-line still reports them when they fall behind, which is how their health stays visible.
+These products are published **operationally but not drawn on the
+website's map**. R2 alone carries them, so this repository's Pages status names none of
+them: the map's status line and the site's watchdog see only whether the
+origin publishes. Their fates are in the status on R2 and on the
+`published` branch.
 
 ## Where the data comes from
 
@@ -25,9 +28,9 @@ run time. This repository carries `pipeline/products.toml` and its publish
 workflow, and nothing else executable. Each run publishes to GitHub Pages and
 to Cloudflare R2 from one build. Related repositories: `aviation-data-repo` (the other land points, made the same way).
 
-**Which document gets what, and what "update docs" means across all
-thirty-one repositories, is the doctrine block at the top of `CLAUDE.md`**: the
-same text in all thirty-one, held equal by the site's `check:docs`.
+**Which document gets what, and what "update docs" means across every
+repository of this project, is the doctrine block at the top of `CLAUDE.md`**: the
+same text in each, held equal by the site's `check:docs`.
 
 ## Structure
 
